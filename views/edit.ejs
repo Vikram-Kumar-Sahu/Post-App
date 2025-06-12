@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Edit Post</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white">
+  <div class="min-h-screen p-6 md:p-10 max-w-4xl mx-auto">
+    <div class="flex justify-between items-center mb-10">
+      <h3 class="text-3xl md:text-4xl font-bold">Edit Your Post</h3>
+      <a class="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-semibold px-5 py-2 rounded-lg shadow-md transition-all duration-300" href="/logout">Logout</a>
+    </div>
+
+    <div class="bg-white/5 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-white/10 shadow-xl">
+      <form method="post" action="/update/<%=post._id%>" class="space-y-6">
+        <textarea class="resize-none bg-white/10 text-white border border-white/20 rounded-lg p-4 w-full focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500 transition duration-300" rows="4" placeholder="What's on your mind?" name="content"><%= post.content %></textarea>
+        <input class="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-bold py-2 px-6 rounded-lg shadow-lg transition-all duration-300 cursor-pointer" type="submit" value="Update Post">
+      </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Public Feed</title>
+</head>
+<body class="bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white">
+  <div class="min-h-screen p-6 md:p-10 max-w-4xl mx-auto">
+    <div class="flex justify-between items-center mb-10">
+      <h1 class="text-4xl font-bold">Public Feed</h1>
+      <a href="/profile" class="text-sm bg-yellow-500 px-4 py-2 rounded-md font-semibold">Go to Profile</a>
+    </div>
+
+    <% posts.forEach(function(post) { %>
+      <div class="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 shadow-lg mb-6">
+        <div class="flex justify-between items-center mb-3">
+          <h4 class="text-lg font-semibold text-blue-300">@<%= post.user.username %></h4>
+          <small class="text-sm text-gray-400">Likes: <%= post.likes.length %></small>
+        </div>
+        <p class="text-base leading-relaxed text-gray-200 mb-4"><%= post.content %></p>
+        <div class="flex gap-4">
+          <a class="text-blue-400 hover:text-blue-300 transition font-medium" href="/like/<%= post._id %>">
+            <%= post.likes.indexOf(currentUser.userid) === -1 ? "Like" : "Unlike" %>
+          </a>
+          <% if (String(post.user._id) === currentUser.userid) { %>
+            <a class="text-yellow-400 hover:text-yellow-300 transition font-medium" href="/edit/<%= post._id %>">Edit</a>
+          <% } %>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</body>
+</html>
